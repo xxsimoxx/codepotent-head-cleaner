@@ -1,0 +1,45 @@
+/**
+ * -----------------------------------------------------------------------------
+ * Purpose: Styles for admin views of Head Cleaner plugin for ClassicPress.
+ * -----------------------------------------------------------------------------
+ * This is free software released under the terms of the General Public License,
+ * version 2, or later. It is distributed WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. Full
+ * text of the license is available at https://www.gnu.org/licenses/gpl-2.0.txt.
+ * -----------------------------------------------------------------------------
+ * Copyright 2020, Code Potent
+ * -----------------------------------------------------------------------------
+ *           ____          _      ____       _             _
+ *          / ___|___   __| | ___|  _ \ ___ | |_ ___ _ __ | |_
+ *         | |   / _ \ / _` |/ _ \ |_) / _ \| __/ _ \ '_ \| __|
+ *         | |__| (_) | (_| |  __/  __/ (_) | ||  __/ | | | |_
+ *          \____\___/ \__,_|\___|_|   \___/ \__\___|_| |_|\__|.com
+ *
+ * -----------------------------------------------------------------------------
+ */
+.codepotent-head-cleaner-details-link {
+	font-size:85%;
+	}
+.codepotent-head-cleaner-example {
+	display:none;
+	margin-top:5px;
+	padding:5px 10px 10px;
+	background:#fafafa;
+	color:#777;
+	max-width:1000px;
+	}
+.codepotent-head-cleaner-example .description {
+	font-style:normal;
+	margin-bottom:5px;
+	}
+.codepotent-head-cleaner-example textarea {
+	display:block;
+	overflow:scroll;
+	width:1000px;
+	max-width:1000px;
+	max-height:400px;
+	}
+.codepotent-head-cleaner-settings-main .form-table th,
+.codepotent-head-cleaner-settings-main .form-table td {
+	vertical-align:top !important;
+	}
