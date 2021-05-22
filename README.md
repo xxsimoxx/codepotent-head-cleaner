@@ -2,9 +2,11 @@
 
 ### Always use the **[latest release](https://github.com/codepotent/Head-Cleaner/releases/latest)** on production sites! 
 
-### [Online Docs](https://codepotent.com/classicpress/plugins/) **|** [Support Forum](https://forums.classicpress.net/c/plugins/plugin-support/67)
+### How do I use the plugin?
+Go to `Dashboard > Settings > Head Cleaner`, tick the boxes for the items you want to remove, and then save the settings. You can take a look at your page source on the frontend to verify that it worked.
 
-_Branch downloads and clones are for development; not for general use._
+### How do I know which tags I can remove?
+Each tag is fully described right next to the very checkbox that will disable it. For those that provide functionality not used on your site, you can remove the tag(s).
 
 ---
 
