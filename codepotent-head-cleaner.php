@@ -369,6 +369,9 @@ img.emoji {
 
 		// Removing pingback is different; must be removed via output buffer.
 		if (!empty($this->options['pingback-__return_false'])) {
+			if (defined('WP_CLI') && WP_CLI) {
+				return;
+			}
 			add_action('template_redirect', [$this, 'pingback_buffer_start'], -1);
 			add_action('get_header', [$this, 'pingback_buffer_start']);
 			add_action('wp_head', [$this, 'pingback_buffer_end'], 999);
