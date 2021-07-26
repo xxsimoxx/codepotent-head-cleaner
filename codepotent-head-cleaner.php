@@ -4,7 +4,7 @@
  * -----------------------------------------------------------------------------
  * Plugin Name: Head Cleaner
  * Description: Remove specific tags from the ClassicPress head section to reduce server requests and improve site performance.
- * Version: 1.1.0
+ * Version: 1.1.1
  * Author: Simone Fioravanti
  * Author URI: https://software.gieffeedizioni.it
  * Plugin URI: https://software.gieffeedizioni.it
