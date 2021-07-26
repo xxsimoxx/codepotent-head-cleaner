@@ -177,12 +177,17 @@ class HeadCleaner {
 	 * @return array[][] Array of hook properties.
 	 */
 	public function get_hook_properties() {
-		return [
+
+		// Initialization.
+		$props = [];
+
+		// Flesh out properties for relevant hooks.
+		$props = [
 			[
 				'hook'        => 'wp_head',
 				'function'    => 'wp_generator',
 				'label'       => esc_html__('Generator Tag', 'codepotent-head-cleaner'),
-				'short_desc'  => esc_html__('Remove generator tag.', 'codepotent-head-cleaner'),
+				'short_desc'  => esc_html__('Remove ClassicPress generator tag.', 'codepotent-head-cleaner'),
 				'long_desc'   => esc_html__('This tag references the platform and version on which the site it built. Note that it is not a security risk to leave this tag in the head section. Leaving this tag intact helps ClassicPress. The following is an example of the tag removed.', 'codepotent-head-cleaner'),
 				'examples'    => [
 					'<meta name="generator" content="WordPress 4.9.15 (compatible; ClassicPress 1.2.0)">',
@@ -302,6 +307,28 @@ img.emoji {
 			],
 
 		];
+
+		// Only add a control for Classic Commerce tag if plugin is active.
+		if (is_plugin_active('classic-commerce/classic-commerce.php')) {
+			$props["0.5"] = [
+				'hook'        => 'classiccommerce_generator',
+				'function'    => '__return_false',
+				'label'       => esc_html__('Generator Tag', 'codepotent-head-cleaner'),
+				'short_desc'  => esc_html__('Remove Classic Commerce generator tag.', 'codepotent-head-cleaner'),
+				'long_desc'   => esc_html__('This tag references the version of Classic Commerce the site is running. The following is an example of the tag removed.', 'codepotent-head-cleaner'),
+				'examples'    => [
+					'<meta name="generator" content="Classic Commerce 3.5.3">',
+				],
+			];
+
+		}
+
+		// Sort the properties array to ensure proper ordering of inputs.
+		ksort($props, SORT_NUMERIC);
+
+		// Return the whole mess.
+		return $props;
+
 	}
 
 	/**
@@ -331,9 +358,15 @@ img.emoji {
 			remove_action('wp_head', 'wp_shortlink_wp_head');
 		}
 
-		// Remove generator tag.
+		// Remove ClassicPress generator tag.
 		if (!empty($this->options['wp_head-wp_generator'])) {
 			remove_action('wp_head', 'wp_generator');
+		}
+
+		// Remove Classic Commerce generator tag.
+		if (!empty($this->options['classiccommerce_generator-__return_false'])) {
+			remove_filter('get_the_generator_html', 'wc_generator_tag', 10, 2);
+			remove_filter('get_the_generator_xhtml', 'wc_generator_tag', 10, 2);
 		}
 
 		// Remove feed tags.
