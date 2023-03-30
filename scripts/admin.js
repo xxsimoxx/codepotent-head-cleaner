@@ -13,7 +13,7 @@
 
 jQuery(document).ready(function($) {
 
-	$('.'+plugin_slug+'-details-link').click(function(e) {
+	$('.codepotent-head-cleaner-details-link').on('click', function(e) {
 		e.preventDefault();
 		$('#'+this.dataset.id+'-example').toggle('fast', function() {});
 	});

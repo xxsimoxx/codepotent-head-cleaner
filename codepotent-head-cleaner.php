@@ -4,7 +4,7 @@
  * -----------------------------------------------------------------------------
  * Plugin Name: Head Cleaner
  * Description: Remove specific tags from the ClassicPress head section to reduce server requests and improve site performance.
- * Version: 1.2.2
+ * Version: 1.2.3
  * Requires CP: 1.0
  * Requires PHP: 5.6
  * Author: Simone Fioravanti
@@ -162,7 +162,6 @@ class HeadCleaner {
 		if (get_current_screen()->base === 'settings_page_'.PLUGIN_SHORT_SLUG) {
 			wp_enqueue_script(PLUGIN_SLUG.'-admin', URL_SCRIPTS.'/admin.js', [], time());
 			wp_enqueue_style(PLUGIN_SLUG.'-admin', URL_STYLES.'/admin.css', [], time());
-			wp_localize_script(PLUGIN_SLUG.'-admin', 'plugin_slug', PLUGIN_SLUG);
 		}
 
 	}
