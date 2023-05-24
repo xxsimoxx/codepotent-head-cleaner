@@ -34,6 +34,8 @@ if (!defined('ABSPATH')) {
 
 class HeadCleaner {
 
+	private $options;
+
 	/**
 	 * Constructor.
 	 *
