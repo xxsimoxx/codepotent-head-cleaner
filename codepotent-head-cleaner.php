@@ -4,7 +4,7 @@
  * -----------------------------------------------------------------------------
  * Plugin Name: Head Cleaner
  * Description: Remove specific tags from the ClassicPress head section to reduce server requests and improve site performance.
- * Version: 1.2.4
+ * Version: 1.2.5
  * Requires CP: 1.0
  * Requires PHP: 5.6
  * Author: Simone Fioravanti
@@ -313,7 +313,7 @@ img.emoji {
 
 		// Only add a control for Classic Commerce tag if plugin is active.
 		if (is_plugin_active('classic-commerce/classic-commerce.php')) {
-			$props["0.5"] = [
+			$props['0.5'] = [
 				'hook'        => 'classiccommerce_generator',
 				'function'    => '__return_false',
 				'label'       => esc_html__('Generator Tag', 'codepotent-head-cleaner'),
@@ -399,7 +399,7 @@ img.emoji {
 			remove_action('admin_print_scripts', 'print_emoji_detection_script');
 			remove_action('wp_print_styles', 'print_emoji_styles');
 			remove_action('admin_print_styles', 'print_emoji_styles');
-			add_filter('emoji_svg_url' , '__return_false');
+			add_filter('emoji_svg_url', '__return_false');
 			remove_filter('the_content', 'convert_smilies', 20);
 		}
 
@@ -489,7 +489,7 @@ img.emoji {
 		echo '<h1 class="wp-heading">'.esc_html__('Head Cleaner Settings', 'codepotent-head-cleaner').'</h1>';
 
 		// Wrap.
-		echo '<div class="'.PLUGIN_SLUG.'-settings-main">';
+		echo '<div class="'.esc_attr(PLUGIN_SLUG).'-settings-main">';
 
 		// Start up a form.
 		echo '<form action="options.php" method="post">';
@@ -507,7 +507,7 @@ img.emoji {
 		echo '</form>';
 
 		// Close the inner wrapper.
-		echo '</div><!-- .'.PLUGIN_SLUG.'-settings-main -->';
+		echo '</div><!-- .'.esc_attr(PLUGIN_SLUG).'-settings-main -->';
 
 		// Close the outer container.
 		echo '</div><!-- .wrap -->';
@@ -535,13 +535,13 @@ img.emoji {
 
 		// Output the checkbox.
 		echo '<label>';
-		echo '<input type="checkbox" id="'.$id.'" name="'.PLUGIN_PREFIX.'_settings['.$id.']" value="1" '.$checked.'>';
-		echo '<span class="description">'.$action['short_desc'].'</span>';
+		echo '<input type="checkbox" id="'.esc_attr($id).'" name="'.esc_attr(PLUGIN_PREFIX).'_settings['.esc_attr($id).']" value="1" '.esc_attr($checked).'>';
+		echo '<span class="description">'.esc_attr($action['short_desc']).'</span>';
 		echo '</label>';
-		echo ' <label><a href="#" class="'.PLUGIN_SLUG.'-details-link" data-id="'.$id.'">'.esc_html__('Details', 'codepotent-head-cleaner').'</a></label>';
+		echo ' <label><a href="#" class="'.esc_attr(PLUGIN_SLUG).'-details-link" data-id="'.esc_attr($id).'">'.esc_html__('Details', 'codepotent-head-cleaner').'</a></label>';
 
 		// Output code examples after the checkbox and label.
-		echo $this->render_example_tags($id, $action);
+		echo wp_kses_post($this->render_example_tags($id, $action));
 
 	}
 
